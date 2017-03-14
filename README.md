@@ -3,7 +3,7 @@ calendar library built in JQuery and CSS
 
 ### Usage
 #### HTML
-add this to a div with a if of "je-calendar"
+add this to a div with an id of "je-calendar"
 ```html
 <div id="je-calendar"></div>
 ```
