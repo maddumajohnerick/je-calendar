@@ -1,0 +1,54 @@
+ #je-calendar{
+	width: 97%;
+	/*padding: 10px;*/
+    margin: 5px;
+	background: white;
+}
+#je-calendar table{
+	width: 100%;
+	border: 1px;
+}
+#je-calendar table tr{
+	vertical-align: middle;
+}
+#je-calendar table tr th{
+	height: 20px;
+    padding-top: 5px;
+	width: 14.2%;
+    font-size: 15px;
+	background: #f05a28;
+}
+#je-calendar table tr td{
+	height: 20px;
+    padding-top: 5px;
+	width: 14.2%;
+	/*padding: 5px;*/
+    font-size: 15px;
+	text-align: center;
+	background: #b7b7b7;
+}
+#je-calendar table tr td#calnext{
+	font-weight: bold;
+    font-size: 31px;
+	text-align: right;
+	cursor: default;
+	background: white;
+    transition:.2s;
+}
+#je-calendar table tr td#calprevious{
+	font-weight: bold;
+    font-size: 31px;
+	text-align: left;
+	cursor: default;
+	background: white;
+    transition:.2s;
+}
+#je-calendar table tr td#calheader{
+	font-size:30px;
+	cursor: default;
+	text-align: center;
+	background: white;
+}
+#calnext:hover, #calprevious:hover{
+    color: #23b45d;
+}
