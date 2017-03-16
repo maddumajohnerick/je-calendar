@@ -1,6 +1,8 @@
 # je-calendar
 calendar library built in JQuery and CSS
 
+[Demo Page](https://maddumajohnerick.github.io/je-calendar/examples/)
+
 ### Usage
 #### HTML
 add this to a div with an id of "je-calendar".

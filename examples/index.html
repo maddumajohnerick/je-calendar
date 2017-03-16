@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" dochead="1">
+  <title>je-calendar</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../src/je-calendar.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script src="../src/je-calendar.js"></script>
+</head>
+<body>
+  <!-- <button id="clickme">CLICK ME</button> -->
+  <div class="container">
+    <br />
+    <br />
+    <div class="jumbotron">
+      <h1>je-calendar</h1>
+      <p>calendar library built in JQuery and CSS</p>
+      <br />
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6"><div id="je-calendar"></div></div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+  $(document).ready(function() {
+    JECalendar.init();
+  })
+  </script>
+</body>
+</html>
