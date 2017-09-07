@@ -51,7 +51,9 @@ var JECalendar = (function(){
 
 		var ctr = 1, ctr2 = 1;
 		$(".caltiles").each(function(){
-			// $(this).css("background", "#b7b7b7");
+			$(this).removeClass("tile-active");
+			$(this).removeClass("tile-filled");
+			$(this).removeClass("tile-empty");
 			$(this).html("&nbsp;");
 		});
 		$(".caltiles").each(function(){
