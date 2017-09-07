@@ -18,11 +18,12 @@
 
 #je-calendar table tr th{
 	height: 20px;
-    padding-top: 5px;
+  padding-top: 5px;
 	width: 14.2%;
   font-size: 15px;
 	background: #f05a28;
   text-align: center;
+  padding: 5px;
 }
 
 #je-calendar table tr td{
