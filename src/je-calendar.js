@@ -3,16 +3,33 @@ var JECalendar = (function(){
 	var initialDate = moment();
 	var dateToday = initialDate.format("D");
 
-	function init(){				// initialize the table for plotting
+	/* ----------------------------------------------------------
+	 * INITIALIZE CALENDAR TABLE
+	 * -------------------------------------------------------- */
+	function init(){
+		var daysHeader = $("<tr></tr>");
+		var days = ["S", "M", "T", "W", "T", "F", "S"];
+
 		$("<div style='clear:both;'></div>").appendTo("#je-calendar");
 		$("<table cellspacing='5px'></table>").appendTo("#je-calendar");
 		$("<tr><td id='calprevious'>&lt</td><td colspan='5' id='calheader'>APril 2010</td><td id='calnext'>&gt;</td></tr>").appendTo("#je-calendar table");
-		$("<tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>").appendTo("#je-calendar table");
 
+		// setup calendar header
+		for (var h = 0; h < 7; h++) {
+			$("<th>"+ days[h] +"</th>").appendTo(daysHeader);
+		}
+		$(daysHeader).appendTo("#je-calendar table");
+
+		// setup the tiles for days
 		for(var i = 0; i <= 7; i++){
-			$("<tr><td class='caltiles'></td><td class='caltiles'></td><td class='caltiles'></td><td class='caltiles'></td><td class='caltiles'></td><td class='caltiles'></td><td class='caltiles'></td></tr>").appendTo("#je-calendar table");
+			var row = $("<tr></tr>");
+			for (var j = 0; j < 7; j++) {
+				$("<td class='caltiles'></td>").appendTo(row);
+			}
+			$(row).appendTo("#je-calendar table");
 		}
 
+		// add listeners for specific parts
 		$("#calprevious").on("click", gotoPrevious);
 		$("#calnext").on("click", gotoNext);
 		$("#calheader").on("click", gotoCurrent);
@@ -20,49 +37,58 @@ var JECalendar = (function(){
 		plotCalendar();
 	}
 
-	function plotCalendar(){		// plot the calendar
+	/* ----------------------------------------------------------
+	 * PLOTS THE DATES ON THE CALENDAR
+	 * -------------------------------------------------------- */
+	function plotCalendar(){
 		$("#calheader").html(initialDate.format("MMMM YYYY"));
-		var selectedDate = parseInt(initialDate.format("D"));	// get the day of current month
-		var firstDay = initialDate;								// pass initdate value
-		var daysinmonth = firstDay.daysInMonth();				// get the total days of the selected month
-		firstDay.subtract(selectedDate-1, "days");				// get the dayy of week of the fisrt day
+		// get the current date
+		var selectedDate = parseInt(initialDate.format("D"));
+		// get the day of the 1st of the month
+		var firstDay = initialDate.subtract(selectedDate-1, "days");
+		// get the total days of the selected month
+		var daysinmonth = firstDay.daysInMonth();
 
 		var ctr = 1, ctr2 = 1;
 		$(".caltiles").each(function(){
-			$(this).css("background", "#b7b7b7");
+			// $(this).css("background", "#b7b7b7");
 			$(this).html("&nbsp;");
 		});
 		$(".caltiles").each(function(){
+			// fill tiles with dark gray if not between said dates
 			if(ctr >= parseInt(firstDay.format("d"))+1 && ctr2 <= parseInt(daysinmonth)){
 				$(this).html(ctr2);
+				// fill tiles with green if date and matches current
 				if(ctr2 == parseInt(dateToday) && moment().format("YYYY-M") == initialDate.format("YYYY-M"))
 				{
-					$(this).css("fontWeight", "bold");
-					$(this).css("background", "#23b45d");
+					$(this).addClass("tile-active");
 				}
 				else{
-					$(this).css("fontWeight", "100");
+					$(this).addClass("tile-filled");
 				}
 				ctr2++
 			}
 			else{
-				$(this).css("background", "#757276");
+				$(this).addClass("tile-empty");
 			}
 			ctr++;
 		});
 	}
 
-	function gotoPrevious(){		// go to previous month
+	// go to previous month
+	function gotoPrevious(){
 		initialDate.subtract(1, 'M');
 		plotCalendar();
 	}
 
-	function gotoNext(){			// go to next month
+	// go to next month
+	function gotoNext(){
 		initialDate.add(1, 'M');
 		plotCalendar();
 	}
 
-	function gotoCurrent(){			// go to current month
+	// go to current month
+	function gotoCurrent(){
 		initialDate = moment();
 		plotCalendar();
 	}
